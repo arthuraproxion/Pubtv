@@ -1,0 +1,27 @@
+{% extends 'screen/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>This is the user register page</h1>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Log In</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+
+    </form>
+    <div>
+        <small>
+           Need an account?
+            <a href=" {%url 'users-register' %}">Sign Up Now</a>
+        </small>
+    </div>
+
+</div>
+
+
+{% endblock content %}

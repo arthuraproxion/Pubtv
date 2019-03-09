@@ -1,0 +1,36 @@
+<style type="text/css">
+    .media{
+        width:400px;
+        }
+    .image{
+        width:200px;
+        height:300px;
+        float: left;}
+    .text{
+        width:200px;
+        heightt:300px;
+        float:right;}
+</style>
+{% extends 'screen/base.html' %}
+{% block content %}
+    <div class="media">
+    {% if user.first_name == '' %}
+        <div class="image">
+            <p >
+                <img class='image' src="{{ user.profile.image.url }}">
+            </p>
+        </div>
+        <div class="text">
+            <h1 align="center">This is the profile of {{ user.username }}</h1>
+        </div>
+    {% else %}
+        <div class="image">
+            <img class='image' src="{{ user.profile.image.url }}">
+        </div>
+        <div class="text">
+            <h1>This is the profile of {{ user.first_name }} {{ user.last_name }}</h1>
+            <p>user e-mail : {{ user.email }}</p>
+        </div>
+    {% endif %}
+    </div>
+{% endblock content %}

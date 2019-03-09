@@ -1,0 +1,19 @@
+{% extends 'screen/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+    {% if form %}
+        <form method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>You can select the video is wants to play...</legend>
+                {{ form }}
+            </fieldset>
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    {% endif %}
+    <p>{{ video_selection }}</p>
+<div>
+{% endblock content %}

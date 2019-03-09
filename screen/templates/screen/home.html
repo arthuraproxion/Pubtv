@@ -1,0 +1,82 @@
+<style type="text/css">
+    .ana{
+        background-color: blue;
+        width:800px;
+        margin: auto;
+        border: #222222;}
+
+    .ustsol{
+        background-color: green;
+        width: 400px;
+        height: 400px;
+        float: left;
+        overflow: scroll;}
+
+    .ustsag{
+        background-color: blue;
+        width: 400px;
+        height: 400px;
+        float:right;}
+
+    .altsol{
+        background-color: red;
+        width: 400px;
+        height: 400px;
+        float: left;}
+
+    .altsag{
+        background-color: mediumpurple;
+        width: 400px;
+        height: 400px;
+        float:right;}
+
+    .phrase1{
+        color: white}
+
+
+
+</style>
+
+{% extends 'screen/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="ana">
+        <div class="ustsol">
+            {% for k in text %}
+                <h1>{{ k.title }}</h1>
+                <p>By {{ k.author }} on {{ k.date_posted|date:'F d, Y'}}</p>
+                <p>{{ k.content }}</p>
+            {% endfor %}
+
+            <p>{{ video.video.url }}</p>
+        </div>
+
+        <div class="ustsag">
+            <p style="text-align: center;" >
+                <img src="{{ image.image.url }}">
+            </p>
+        </div>
+
+        <div class="altsol">
+            <iframe width="399" height="399" src="http://www.adu.edu.tr"></iframe>
+        </div>
+
+        <div class="altsag">
+            <p style="padding-top: 15%; position: center; display: inline-block">
+                <video
+                    style="
+                    width: 399px;
+                    "
+                    src="{{ video.video.url }}" type="video/mp4" autoplay playsinline loop muted>
+                </video>
+            </p>
+        </div>
+        <p class="phrase1">This is for {{ height }}</p>
+    </div>
+{% else %}
+    <p>You must be login inorder to view page.
+        <a href="{% url 'users-login' %}">Log In</a></p>
+{% endif %}
+
+{% endblock content %}
+
